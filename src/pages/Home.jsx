@@ -9,6 +9,7 @@ export const Home = () => {
 	const [planets, setPlanets] = useState([]);
 	const [people, setPeople] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const starBackground = "https://media.istockphoto.com/id/185215907/es/foto/big-planetas-y-brillantes-estrellas-galaxia-de-espacio.jpg?s=612x612&w=0&k=20&c=oct3WTWpRbQgbs2GbQoiQ-gvddj3hpknb-2Qa3ZSVLw=";
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -41,30 +42,35 @@ export const Home = () => {
 
 
 	return (
-		<div className="container-fluid mt-5 px-5">
-			<h1 className="text-danger">NAVES</h1>
+		<div className="container-fluid min-vh-100 py-5 px-5" 
+			 style={{ 
+				 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${starBackground})`,
+				 backgroundSize: 'cover',
+				 backgroundPosition: 'center',
+				 backgroundAttachment: 'fixed',
+				 color: 'white'
+			 }}>
+			<h1 className="text-danger text-center fw-bold mt-4 mb-4" style={{ textShadow: "2px 2px 4px #000" }}>STARSHIPS</h1>
 			<div className="d-flex flex-nowrap overflow-auto pb-4 custom-scrollbar">
 				{starships.map((nave) => (
 					<div key={nave.url} className="me-3" style={{ minWidth: "18rem" }}>
-						<Card name={nave.name} />
+						<Card item={nave} type="starship" />
 					</div>
 				))}
 			</div>
 
-			<h1 className="text-danger mt-4">PLANETAS</h1>
-			<div className="d-flex flex-nowrap overflow-auto pb-4 custom-scrollbar">
+<h1 className="text-danger text-center fw-bold mt-4 mb-4" style={{ textShadow: "2px 2px 4px #000" }}>PLANETS</h1>			<div className="d-flex flex-nowrap overflow-auto pb-4 custom-scrollbar">
 				{planets.map((planet) => (
 					<div key={planet.url} className="me-3" style={{ minWidth: "18rem" }}>
-						<Card name={planet.name} />
+						<Card item={planet} type="planet" />
 					</div>
 				))}
 			</div>
 
-			<h1 className="text-danger mt-4">PERSONAJES</h1>
-			<div className="d-flex flex-nowrap overflow-auto pb-4 custom-scrollbar">
+<h1 className="text-danger text-center fw-bold mt-4 mb-4" style={{ textShadow: "2px 2px 4px #000" }}>CHARACTERS</h1>			<div className="d-flex flex-nowrap overflow-auto pb-4 custom-scrollbar">
 				{people.map((person) => (
 					<div key={person.url} className="me-3" style={{ minWidth: "18rem" }}>
-						<Card name={person.name} />
+						<Card item={person} type="person" />
 					</div>
 				))}
 			</div>
