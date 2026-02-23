@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FavoritesContext } from "./FavoriteContext";
 
 export const Navbar = () => {
+    const {favorites} = useContext(FavoritesContext)
     const starBackground = "https://www.shutterstock.com/image-vector/astrology-horizontal-star-universe-background-260nw-2553208135.jpg";
 
     return (
@@ -22,13 +25,23 @@ export const Navbar = () => {
                 </Link>
                 
                 <div className="ml-auto d-flex align-items-center">
-                    {/* Botón de favoritos ENLAZAR CON ME GUSTA */}
                     <div className="dropdown">
-                        <button className="btn btn-dark dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown">
-                            Favorites <span className="badge bg-secondary ms-1">0</span>
+                        <button 
+                        className="btn btn-dark dropdown-toggle fw-bold" 
+                        type="button" 
+                        data-bs-toggle="dropdown">Favorites
+                        <span className="badge bg-secondary ms-1">{favorites.length}</span>
                         </button>
                         <ul className="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><span className="dropdown-item text-muted small">(Empty)</span></li>
+                            {favorites.length === 0 ? (
+                                <li><span className="dropdown-item text-muted small">(Empty)</span></li>
+                            ) : (
+                                favorites.map((fav) =>(
+                                    <li key={fav.url}>
+                                        <span className="dropdown-item text-light">{fav.name}</span>
+                                    </li>
+                                ))
+                            )}
                         </ul>
                     </div>
                 </div>
