@@ -14,12 +14,8 @@ export const Footer = () => {
                 borderTop: '2px solid #dc3545' // Cambiado a Top para que divida el cuerpo del footer
             }}
         >
-            <p className="mb-2">
-                Check the <a target="_blank" href="https://4geeks.com/docs/start/start-react-advanced" className="text-warning text-decoration-none">template documentation</a> <i className="fa-solid fa-file"></i> for help.
-            </p>
             <p className="mb-0">
-                Made with <i className="fa fa-heart text-danger" /> by{" "}
-                <a href="http://www.4geeksacademy.com" className="text-warning text-decoration-none fw-bold">4Geeks Academy</a>
+                Made with <i className="fa fa-heart text-danger" /> by Abraham Barboza
             </p>
         </footer>
     );
